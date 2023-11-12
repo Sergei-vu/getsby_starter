@@ -5,8 +5,8 @@ import parse from "html-react-parser"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { AudioPlayerProvider } from '../components/AudioPlayerContext';
-import AudioPlayer from '../components/AudioPlayer';
+import { AudioPlayerProvider } from "../components/AudioPlayerContext"
+import AudioPlayer from "../components/AudioPlayer"
 
 
 const BlogIndex = ({
