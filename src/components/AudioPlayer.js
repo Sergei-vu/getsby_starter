@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAudioPlayer } from './AudioPlayerContext';
-import styles from './AudioPlayer.module.css'; // Создайте этот файл для стилей
+import styles from '../css/style.css'; // Создайте этот файл для стилей
 
 const AudioPlayer = () => {
   const { audioRef, isPlaying, togglePlayPause } = useAudioPlayer();
