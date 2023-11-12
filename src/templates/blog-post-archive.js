@@ -8,7 +8,6 @@ import Seo from "../components/seo"
 import { AudioPlayerProvider } from "../components/AudioPlayerContext"
 import AudioPlayer from "../components/AudioPlayer"
 
-
 const BlogIndex = ({
   data,
   pageContext: { nextPagePath, previousPagePath },
@@ -29,55 +28,51 @@ const BlogIndex = ({
   }
 
   return (
-    <Layout isHomePage>
-      <Seo title="All posts" />
-
-      <Bio />
-
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.title
-
-          return (
-            <li key={post.uri}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.uri} itemProp="url">
-                      <span itemProp="headline">{parse(title)}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.date}</small>
-                </header>
-                <section itemProp="description">{parse(post.excerpt)}</section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
-
-      {previousPagePath && (
-        <>
-          <Link to={previousPagePath}>Previous page</Link>
-          <br />
-        </>
-      )}
-      {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
-    </Layout>
-  )
-}
-return (
     <AudioPlayerProvider>
-      <div>
-        <h1>Radio</h1>
-        <AudioPlayer />
-      </div>
+      <Layout isHomePage>
+        <Seo title="All posts" />
+        <Bio />
+
+        <AudioPlayer /> {/* Вот ваш аудиоплеер, добавленный в компонент BlogIndex */}
+
+        <ol style={{ listStyle: `none` }}>
+          {posts.map(post => {
+            const title = post.title
+
+            return (
+              <li key={post.uri}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>
+                      <Link to={post.uri} itemProp="url">
+                        <span itemProp="headline">{parse(title)}</span>
+                      </Link>
+                    </h2>
+                    <small>{post.date}</small>
+                  </header>
+                  <section itemProp="description">{parse(post.excerpt)}</section>
+                </article>
+              </li>
+            )
+          })}
+        </ol>
+
+        {previousPagePath && (
+          <>
+            <Link to={previousPagePath}>Previous page</Link>
+            <br />
+          </>
+        )}
+        {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+      </Layout>
     </AudioPlayerProvider>
   )
+}
+
 export default BlogIndex
 
 export const pageQuery = graphql`
