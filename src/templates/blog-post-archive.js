@@ -70,7 +70,14 @@ const BlogIndex = ({
     </Layout>
   )
 }
-
+return (
+    <AudioPlayerProvider>
+      <div>
+        <h1>Radio</h1>
+        <AudioPlayer />
+      </div>
+    </AudioPlayerProvider>
+  )
 export default BlogIndex
 
 export const pageQuery = graphql`
